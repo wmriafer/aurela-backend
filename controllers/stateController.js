@@ -46,8 +46,9 @@ async function getState(req, res, next) {
     const data = Object.fromEntries(entries);
     res.json({
       profile: { name: req.user.name, avatar: req.user.avatar },
-      theme: settings.theme,
+     theme: settings.theme,
       accent: settings.accent,
+      customBg: settings.customBg,
       ...data,
     });
   } catch (err) {
