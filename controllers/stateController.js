@@ -106,10 +106,11 @@ async function syncCollection(req, res, next) {
 // PUT /api/state/settings — { theme, accent, profile: { name, avatar } }
 async function syncSettings(req, res, next) {
   try {
-    const { theme, accent, profile } = req.body;
+  const { theme, accent, customBg, profile } = req.body;
     const data = {};
     if (theme !== undefined) data.theme = theme;
     if (accent !== undefined) data.accent = accent;
+    if (customBg !== undefined) data.customBg = customBg;
 
     await Settings.findOneAndUpdate({ user: req.userId }, { $set: data }, { upsert: true });
 
