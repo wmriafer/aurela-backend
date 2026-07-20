@@ -19,10 +19,11 @@ router.get('/', async (req, res, next) => {
 // PUT /api/settings
 router.put('/', async (req, res, next) => {
   try {
-    const { theme, accent } = req.body;
+   const { theme, accent, customBg } = req.body;
     const data = {};
     if (theme !== undefined) data.theme = theme;
     if (accent !== undefined) data.accent = accent;
+    if (customBg !== undefined) data.customBg = customBg;
 
     const settings = await Settings.findOneAndUpdate(
       { user: req.userId },
